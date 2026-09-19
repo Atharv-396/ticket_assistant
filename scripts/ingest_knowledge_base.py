@@ -9,7 +9,7 @@ What it does
 ────────────
   1. Discovers all .md files in candidate_pack/knowledge_base/.
   2. Splits each document into overlapping word-based chunks.
-  3. Embeds each chunk using the Gemini text-embedding-004 model.
+  3. Embeds each chunk using the configured Gemini embedding model (gemini-embedding-001).
   4. Persists chunks + embeddings to data/embeddings.json.
   5. Prints a progress summary.
 
@@ -151,8 +151,8 @@ def ingest() -> None:
     with open(out_path, "w", encoding="utf-8") as fh:
         json.dump(all_chunks, fh)
 
-    print(f"\n✓ Stored {len(all_chunks)} chunk(s) ({total_new} newly embedded)")
-    print(f"  → {out_path}")
+    print(f"\n[OK] Stored {len(all_chunks)} chunk(s) ({total_new} newly embedded)")
+    print(f"  -> {out_path}")
 
 
 if __name__ == "__main__":

@@ -11,13 +11,20 @@ from datetime import datetime, timedelta, timezone
 
 import warnings
 
+import bcrypt
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
 from src.config import settings
 
-# Suppress a benign passlib/bcrypt version-detection warning that appears
-# when bcrypt >= 4.x is installed (passlib reads __about__ which was removed).
+# Compatibility shim: passlib 1.7.4 expects bcrypt.__about__.__version__,
+# which was removed in bcrypt >= 4.0.0.
+if not hasattr(bcrypt, "__about__"):
+    class _About:
+        __version__ = getattr(bcrypt, "__version__", "")
+    bcrypt.__about__ = _About()
+
+# Suppress any secondary passlib/bcrypt version warnings
 warnings.filterwarnings(
     "ignore",
     message=".*error reading bcrypt version.*",

@@ -27,6 +27,7 @@ coverage.xml
 
 # Database files — generated at runtime
 app.db
+support_assistant.db
 *.sqlite
 *.sqlite3
 
