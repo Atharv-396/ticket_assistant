@@ -268,3 +268,11 @@ Ticket 1──* Evidence  (file metadata only)
 | JSON text for list columns | SQLite has no array type; transparent and inspectable |
 | NumPy cosine similarity | No vector DB needed for 7 chunks; fully explainable |
 | Pydantic validates all LLM output | Never store unvalidated Gemini responses |
+
+
+
+##deployed At: https://ticket-assistant-5.onrender.com/
+
+
+
+#
